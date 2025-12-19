@@ -1,0 +1,40 @@
+name: Site Integrity Guard
+on: [pull_request]
+
+jobs:
+  check-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: 1. Ensure no images are in the root folder
+        run: |
+          # This looks for any image files sitting outside the /images folder
+          ROOT_IMAGES=$(ls *.jpg *.jpeg *.png *.gif *.svg 2>/dev/null || true)
+          if [ -n "$ROOT_IMAGES" ]; then
+            echo "❌ ERROR: Found images in the root directory: $ROOT_IMAGES"
+            echo "Please move all images into the /images folder."
+            exit 1
+          fi
+
+      - name: 2. Enforce lowercase and no-space naming in /images
+        run: |
+          # This looks for any file in /images with uppercase letters or spaces
+          INVALID_NAMES=$(find images/ -name "* *" -o -name "*[A-Z]*" -type f)
+          if [ -n "$INVALID_NAMES" ]; then
+            echo "❌ ERROR: The following files have spaces or uppercase letters:"
+            echo "$INVALID_NAMES"
+            echo "Please rename them to be lowercase-with-hyphens (e.g., event-rally.jpg)."
+            exit 1
+          fi
+
+      - name: 3. Verify CSS location
+        run: |
+          # Ensures the CSS hasn't been moved or deleted
+          if [ ! -f css/style.css ]; then
+            echo "❌ ERROR: css/style.css not found! Check your folder structure."
+            exit 1
+          fi
+
+      - name: Success
+        run: echo "✅ All structural and naming rules passed!"
