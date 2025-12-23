@@ -41,16 +41,28 @@
     It refreshes automatically and displays posts in real time.
   </p>
 
-  <div style="display: flex; justify-content: center; margin-top: 30px;">
-    <a class="twitter-timeline"
-       data-theme="dark"
-       data-height="700"
-       href="https://twitter.com/AlexSchnellPA3">
-       Tweets by AlexSchnellPA3
-    </a>
+  <!-- Nitter timeline embed via iframe (choose a healthy instance). -->
+  <div class="nitter-embed" aria-label="Nitter timeline for @AlexSchnellPA3">
+    <iframe
+      src="https://xcancel.com/AlexSchnellPA3"
+      style="width: 100%; height: 800px; border: 1px solid #333; border-radius: 8px;"
+      loading="lazy"
+      referrerpolicy="no-referrer"
+      sandbox="allow-same-origin allow-scripts allow-popups"
+      title="Timeline: @AlexSchnellPA3">
+    </iframe>
+
+    <!-- Accessible fallback if the instance blocks iframes or is down -->
+    <p class="nitter-fallback">
+      If the embedded feed doesn’t load, open the profile directly:
+      <a href="https://xcancel.com/AlexSchnellPA3" rel="noopener">xcancel.com/AlexSchnellPA3</a>
+    </p>
   </div>
 
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <!-- No widgets.js: Nitter serves plain HTML and avoids tracking. -->
+  <!-- For single-featured tweets, you can embed per-tweet URLs:
+       https://xcancel.com/AlexSchnellPA3/status/TWEET_ID/embed
+       (Support varies per instance.) -->
 </section>
 
 <section class="callout">
