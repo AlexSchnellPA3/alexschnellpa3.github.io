@@ -70,77 +70,131 @@
     <input type="hidden" name="cancel_return" value="https://alexschnellpa3.com/donation-cancelled.html">
     <input type="hidden" name="no_shipping" value="2">
     <input type="hidden" name="address_override" value="1">
-
-    <label for="amount">Donation Amount (USD)</label>
-    <input type="number" id="amount" name="amount" step="0.01" min="1" required>
-
-    <hr>
-
-    <div>
-      <label for="firstname">First Name</label>
-      <input type="text" id="firstname" name="first_name" required>
-    </div>
-
-    <div>
-      <label for="lastname">Last Name</label>
-      <input type="text" id="lastname" name="last_name" required>
-    </div>
-
-    <div>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-    </div>
-
-    <div>
-      <label for="address1">Address Line 1</label>
-      <input type="text" id="address1" name="address1" required>
-    </div>
-
-    <div>
-      <label for="address2">Address Line 2 (optional)</label>
-      <input type="text" id="address2" name="address2">
-    </div>
-      
-    <div>
-      <label for="city">City</label>
-      <input type="text" id="city" name="city" required>
-    </div>
-      
-    <div>
-      <label for="state">State (2-letter)</label>
-      <input type="text" id="state" name="state" maxlength="2" required value="PA">
-    </div>
-      
-    <div>
-      <label for="zip">ZIP Code</label>
-      <input type="text" id="zip" name="zip" required>
-    </div>
-      
-    <div>
-      <label for="country">Country (2-letter)</label>
-      <input type="text" id="country" name="country" maxlength="2" required value="US">
-    </div>
-      
-    <hr>
-
     <input type="hidden" name="on0" value="Employer">
-    <label for="os0">Employer</label>
-    <input type="text" id="os0" name="os0" required>
-
     <input type="hidden" name="on1" value="Occupation">
-    <label for="os1">Occupation</label>
-    <input type="text" id="os1" name="os1" required>
 
-    <hr>
+<!-- Donor Information (table) -->
+<table style="width:100%; border-collapse:collapse; border:1px solid #d6d9dc; border-radius:8px; overflow:hidden; background:#fff;">
+  <thead>
+    <tr>
+      <th style="background:#f7f9fa; text-align:left; padding:0.6rem 0.9rem; border-bottom:1px solid #d6d9dc;">Label</th>
+      <th style="background:#f7f9fa; text-align:left; padding:0.6rem 0.9rem; border-bottom:1px solid #d6d9dc;">Field</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;"><label for="amount">Donation Amount (USD)<span style="color:#b91c1c;">*</span></label></td>
+      <td style="padding:0.6rem 0.9rem;"><input type="number" id="amount" name="amount" min="1" step="0.01" required placeholder="5.00" style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;"></td>
+    </tr>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;"><label for="firstName">First Name<span style="color:#b91c1c;">*</span></label></td>
+      <td style="padding:0.6rem 0.9rem;"><input type="text" id="firstName" name="first_name" required style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;"></td>
+    </tr>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;"><label for="lastName">Last Name<span style="color:#b91c1c;">*</span></label></td>
+      <td style="padding:0.6rem 0.9rem;"><input type="text" id="lastName" name="last_name" required style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;"></td>
+    </tr>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;"><label for="email">Email<span style="color:#b91c1c;">*</span></label></td>
+      <td style="padding:0.6rem 0.9rem;"><input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;"></td>
+    </tr>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;"><label for="address1">Address Line 1<span style="color:#b91c1c;">*</span></label></td>
+      <td style="padding:0.6rem 0.9rem;"><input type="text" id="address1" name="address1" required style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;"></td>
+    </tr>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;"><label for="address2">Address Line 2 (optional)</label></td>
+      <td style="padding:0.6rem 0.9rem;"><input type="text" id="address2" name="address2" style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;"></td>
+    </tr>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;"><label for="city">City<span style="color:#b91c1c;">*</span></label></td>
+      <td style="padding:0.6rem 0.9rem;"><input type="text" id="city" name="city" required style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;"></td>
+    </tr>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;"><label for="state">State (2‑letter)<span style="color:#b91c1c;">*</span></label></td>
+      <td style="padding:0.6rem 0.9rem;"><input type="text" id="state" name="state" maxlength="2" pattern="[A-Za-z]{2}" required placeholder="PA" style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;"></td>
+    </tr>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;"><label for="zip">ZIP Code<span style="color:#b91c1c;">*</span></label></td>
+      <td style="padding:0.6rem 0.9rem;"><input type="text" id="zip" name="zip" pattern="\d{5}(-\d{4})?" required placeholder="12345 or 12345-6789" style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;"></td>
+    </tr>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;"><label for="country">Country (2‑letter)<span style="color:#b91c1c;">*</span></label></td>
+      <td style="padding:0.6rem 0.9rem;"><input type="text" id="country" name="country" maxlength="2" pattern="[A-Za-z]{2}" required placeholder="US" style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;"></td>
+    </tr>
+    <tr>
+      <td style="padding: 0.6rem 0.9rem;">
+        <label for="os0">Employer
+          <span style="color:#b91c1c;">*</span>
+        </label>
+      </td>
+      <td style="padding: 0.6rem 0.9rem;">
+        <input
+          type="text"
+          id="os0"
+          name="os0"
+          required
+          placeholder="Employer"
+          style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;"
+        >
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 0.6rem 0.9rem;">
+        <label for="os1">Occupation
+          <span style="color:#b91c1c;">*</span>
+        </label>
+      </td>
+      <td style="padding: 0.6rem 0.9rem;">
+        <input
+          type="text"
+          id="os1"
+          name="os1"
+          required
+          placeholder="Occupation"
+          style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;"
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    <!-- Eligibility Checkboxes -->
-    <div class="eligibility-checks" style="font-size: 0.85rem; margin-bottom: 1rem;">
-      <label><input type="checkbox" name="citizen" required> I am a U.S. citizen or lawfully admitted permanent resident (i.e., green card holder).</label><br>
-      <label><input type="checkbox" name="own_funds" required> This contribution is made from my own funds, and funds are not being provided to me by another person or entity for the purpose of making this contribution.</label><br>
-      <label><input type="checkbox" name="age" required> I am at least eighteen years old.</label><br>
-      <label><input type="checkbox" name="not_contractor" required> I am not a federal contractor.</label>
-    </div>
-
+<!-- Eligibility (table) -->
+<table style="width:100%; border-collapse:collapse; border:1px solid #d6d9dc; border-radius:8px; overflow:hidden; background:#fff; margin-top:1rem;">
+  <thead>
+    <tr>
+      <th style="background:#f7f9fa; text-align:left; padding:0.6rem 0.9rem; border-bottom:1px solid #d6d9dc;">Requirement</th>
+      <th style="background:#f7f9fa; text-align:left; padding:0.6rem 0.9rem; border-bottom:1px solid #d6d9dc;">Confirm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;">
+        <label for="elig1">I am a U.S. citizen or lawfully admitted permanent resident (i.e., green card holder).<span style="color:#b91c1c;">*</span></label>
+      </td>
+      <td style="padding:0.6rem 0.9rem;"><input type="checkbox" id="elig1" name="elig1" required></td>
+    </tr>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;">
+        <label for="elig2">This contribution is made from my own funds, and funds are not being provided to me by another person or entity for the purpose of making this contribution.<span style="color:#b91c1c;">*</span></label>
+      </td>
+      <td style="padding:0.6rem 0.9rem;"><input type="checkbox" id="elig2" name="elig2" required></td>
+    </tr>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;">
+        <label for="elig3">I am at least eighteen years old.<span style="color:#b91c1c;">*</span></label>
+      </td>
+      <td style="padding:0.6rem 0.9rem;"><input type="checkbox" id="elig3" name="elig3" required></td>
+    </tr>
+    <tr>
+      <td style="padding:0.6rem 0.9rem;">
+        <label for="elig4">I am not a federal contractor.<span style="color:#b91c1c;">*</span></label>
+      </td>
+      <td style="padding:0.6rem 0.9rem;"><input type="checkbox" id="elig4" name="elig4" required></td>
+    </tr>
+  </tbody>
+</table>
+    
     <input type="hidden" id="customField" name="custom" value="">
 
     <div id="districtError" class="error" style="display:none; color: red; font-weight: bold; margin: 1em 0;"></div>
