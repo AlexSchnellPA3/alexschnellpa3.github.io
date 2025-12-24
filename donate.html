@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Donate | Alex Schnell for PA-3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Support the grassroots campaign for Alex Schnell in Pennsylvania’s 3rd District.">
+  <link rel="canonical" href="https://alexschnellpa3.com/donate.html">
+
+  <meta property="og:title" content="Donate | Alex Schnell for PA-3">
+  <meta property="og:description" content="Support a transparent, community-built grassroots campaign.">
+  <meta property="og:image" content="https://alexschnellpa3.com/images/alex-schnell-placeholder.jpg">
+  <meta property="og:url" content="https://alexschnellpa3.com/donate.html">
+  <meta name="twitter:card" content="summarylargeimage">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Alex Schnell for PA-3</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="constitution.html">The Constitution</a>
+    <a href="pocketbook.html">Pocketbook Issues</a>
+    <a href="grassroots.html">Grassroots Campaign</a>
+    <a href="twitter.html">Live Updates</a>
+    <a href="donate.html">Donate</a>
+  </nav>
+</header>
+
+<main>
+
+<section>
+  <h2>Support the Campaign</h2>
+
+  <p>
+    This is a grassroots effort built openly by the community. Your support helps keep
+    the campaign transparent, accessible, and focused on the people of Pennsylvania’s
+    3rd District.
+  </p>
+
+  <div class="notice">
+    <strong>District Residents Only:</strong>
+    Contributions are currently accepted only from individuals whose residential address
+    is within Pennsylvania’s 3rd Congressional District (PA‑3). The form will verify
+    your address and prevent submission if it appears to be outside the district.
+  </div>
+
+  <div class="notice muted">
+    <strong>FEC Best Efforts:</strong>
+    Federal law requires us to use our best efforts to collect and report the name,
+    mailing address, occupation, and employer of individuals whose contributions exceed
+    $200 in an election cycle.
+  </div>
+</section>
+
+<section>
+  <h2>Donate</h2>
+
+  <form id="paypalForm" method="post" action="https://www.paypal.com/cgi-bin/webscr">
+
+    <!-- PayPal configuration -->
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="your-paypal-email@example.com"> <!-- REPLACE WITH ACTUAL MERCHANT ID OR EMAIL -->
+    <input type="hidden" name="item_name" value="Campaign Donation - Alex Schnell for PA-3">
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="hidden" name="return" value="https://alexschnellpa3.com/thank-you.html">
+    <input type="hidden" name="cancel_return" value="https://alexschnellpa3.com/donation-cancelled.html">
+    <input type="hidden" name="no_shipping" value="2">
+    <input type="hidden" name="address_override" value="1">
+
+    <label for="amount">Donation Amount (USD)</label>
+    <input type="number" id="amount" name="amount" step="0.01" min="1" required>
+
+    <hr>
+
+    <label for="first_name">First Name</label>
+    <input type="text" id="firstname" name="firstname" required>
+
+    <label for="last_name">Last Name</label>
+    <input type="text" id="lastname" name="lastname" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="address1">Address Line 1</label>
+    <input type="text" id="address1" name="address1" required>
+
+    <label for="address2">Address Line 2 (optional)</label>
+    <input type="text" id="address2" name="address2">
+
+    <label for="city">City</label>
+    <input type="text" id="city" name="city" required>
+
+    <label for="state">State (2-letter)</label>
+    <input type="text" id="state" name="state" maxlength="2" required value="PA">
+
+    <label for="zip">ZIP Code</label>
+    <input type="text" id="zip" name="zip" required>
+
+    <label for="country">Country (2-letter)</label>
+    <input type="text" id="country" name="country" maxlength="2" required value="US">
+
+    <hr>
+
+    <input type="hidden" name="on0" value="Employer">
+    <label for="os0">Employer</label>
+    <input type="text" id="os0" name="os0" required>
+
+    <input type="hidden" name="on1" value="Occupation">
+    <label for="os1">Occupation</label>
+    <input type="text" id="os1" name="os1" required>
+
+    <hr>
+
+    <!-- Eligibility Checkboxes -->
+    <div class="eligibility-checks" style="font-size: 0.85rem; margin-bottom: 1rem;">
+      <label><input type="checkbox" name="citizen" required> I am a U.S. citizen or lawfully admitted permanent resident (i.e., green card holder).</label><br>
+      <label><input type="checkbox" name="own_funds" required> This contribution is made from my own funds, and funds are not being provided to me by another person or entity for the purpose of making this contribution.</label><br>
+      <label><input type="checkbox" name="age" required> I am at least eighteen years old.</label><br>
+      <label><input type="checkbox" name="not_contractor" required> I am not a federal contractor.</label>
+    </div>
+
+    <input type="hidden" id="customField" name="custom" value="">
+
+    <div id="districtError" class="error" style="display:none; color: red; font-weight: bold; margin: 1em 0;"></div>
+
+    <button type="submit" id="submitBtn">Donate with PayPal</button>
+  </form>
+</section>
+
+</main>
+
+<footer>
+  <p style="font-size: 0.85rem;">
+    © Alex Schnell for PA-3 | Built openly by the community
+  </p>
+  <a href="https://github.com/alexschnellpa3/alexschnellpa3.github.io/edit/main/donate.html"
+     style="font-size: 0.85em; color: #666;">
+    Suggest an edit to this page on GitHub
+  </a>
+  <p style="font-size: 0.8rem; color: #666;">
+    Paid for by Alex Schnell for PA-3.
+  </p>
+</footer>
+
+<script type="module">
+
+  const PA3_ZIPS = new Set([
+    "19102","19103","19104","19106","19118","19119","19121",
+    "19127","19128","19129","19130","19131","19132","19138",
+    "19139","19140","19141","19143","19144","19145","19146",
+    "19147","19148","19150","19151"
+    // Approximate core ZIPs in PA-3 (Philadelphia areas). Census API is primary for accuracy.
+  ]);
+
+  function buildAddress() {
+    const a1 = document.getElementById('address1').value.trim();
+    const a2 = document.getElementById('address2').value.trim();
+    const city = document.getElementById('city').value.trim();
+    const state = document.getElementById('state').value.trim().toUpperCase();
+    const zip = document.getElementById('zip').value.trim();
+    const country = document.getElementById('country').value.trim().toUpperCase();
+    return { line: [a1, a2, city, state, zip, country].filter(Boolean).join(', '), state, zip };
+  }
+
+  async function isAddressInPA3_Census(fullAddress) {
+    const url =
+      https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=${encodeURIComponent(fullAddress)}&benchmark=PublicARCurrent&vintage=Current_Current&format=json;
+
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error("Census lookup failed");
+
+    const data = await resp.json();
+    const match = data.result.addressMatches?.[0];
+    if (!match) return null;
+
+    const cdInfo = match.geographies?.["119th Congressional Districts"]?.[0];
+    if (!cdInfo) return null;
+
+    return (
+      cdInfo.NAME?.trim() === "Congressional District 3" &&
+      cdInfo.STATE?.trim() === "42"
+    );
+  }
+
+  function isAddressInPA3_ZipOnly(state, zip) {
+    return (
+      state.trim().toUpperCase() === 'PA' &&
+      PA3_ZIPS.has(zip.trim())
+    );
+  }
+
+  document.getElementById('paypalForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const btn = document.getElementById('submitBtn');
+    const errBox = document.getElementById('districtError');
+    errBox.style.display = 'none';
+    errBox.textContent = '';
+    btn.disabled = true;
+    btn.textContent = "Verifying Address...";
+
+    const { line, state, zip } = buildAddress();
+    let inDistrict = null;
+
+    try {
+      inDistrict = await isAddressInPA3_Census(line);
+    } catch (err) {
+      console.warn("Census check failed, using ZIP fallback.", err);
+    }
+
+    if (inDistrict === null) {
+      inDistrict = isAddressInPA3_ZipOnly(state, zip);
+    }
+
+    if (inDistrict) {
+      document.getElementById('customField').value =
+        JSON.stringify({ district: 'PA-3', status: 'verified' });
+      e.target.submit();
+    } else {
+      btn.disabled = false;
+      btn.textContent = "Donate with PayPal";
+      errBox.textContent =
+        'Our records indicate this address is outside PA-3. We are only accepting local contributions at this time.';
+      errBox.style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>
