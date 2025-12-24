@@ -12,7 +12,7 @@
   <meta property="og:description" content="Support a transparent, community-built grassroots campaign.">
   <meta property="og:image" content="https://alexschnellpa3.com/images/alex-schnell-placeholder.jpg">
   <meta property="og:url" content="https://alexschnellpa3.com/donate.html">
-  <meta name="twitter:card" content="summarylargeimage">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -76,11 +76,11 @@
 
     <hr>
 
-    <label for="first_name">First Name</label>
-    <input type="text" id="firstname" name="firstname" required>
+    <label for="firstname">First Name</label>
+    <input type="text" id="firstname" name="first_name" required>
 
-    <label for="last_name">Last Name</label>
-    <input type="text" id="lastname" name="lastname" required>
+    <label for="lastname">Last Name</label>
+    <input type="text" id="lastname" name="last_name" required>
 
     <label for="email">Email</label>
     <input type="email" id="email" name="email" required>
@@ -168,7 +168,7 @@
 
   async function isAddressInPA3_Census(fullAddress) {
     const url =
-      https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=${encodeURIComponent(fullAddress)}&benchmark=PublicARCurrent&vintage=Current_Current&format=json;
+      `https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=${encodeURIComponent(fullAddress)}&benchmark=PublicARCurrent&vintage=Current_Current&format=json`;
 
     const resp = await fetch(url);
     if (!resp.ok) throw new Error("Census lookup failed");
