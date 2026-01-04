@@ -64,31 +64,41 @@
 </section>
 
 <div class="contact-grid">
-  <section>
-    <h3>Send a Message</h3>
-    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">
-      If you’d like to reach out directly, you can use the form below:
-    </p>
+<section>
+  <h3>Send a Message</h3>
+  <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">
+    If you’d like to reach out directly, you can use the form below:
+  </p>
 
-    <form id="contactForm">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" required placeholder="Your full name">
-      </div>
-      
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" required placeholder="email@example.com">
-      </div>
+  <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" enctype="multipart/form-data">
+    
+    <input type="hidden" name="access_key" value="2702eff7-2239-4a67-a23a-99ef6f7c5048">
 
-      <div class="form-group">
-        <label for="message">Message</label>
-        <textarea id="message" rows="6" required placeholder="How can we better represent PA-3?"></textarea>
-      </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required placeholder="Your full name">
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="email@example.com">
+    </div>
 
-      <button type="submit" id="submitBtn">Open Email App</button>
-    </form>
-  </section>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="6" required placeholder="How can we better represent PA-3?"></textarea>
+    </div>
+
+    <div class="form-group" style="margin-bottom: 1.5rem;">
+      <label for="file">Upload document</label>
+      <input type="file" id="file" name="attachment" accept="image/*,.pdf,.doc,.docx">
+    </div>
+
+    <div id="result" style="display: none; padding: 10px; margin-bottom: 1rem; border-radius: 4px; text-align: center;"></div>
+
+	<button type="submit" id="submitBtn">Submit Message</button>
+  </form>
+</section>
 
   <aside class="space-y-6">
     <div class="sidebar-box">
@@ -139,18 +149,51 @@
 </footer>
 
 <script>
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    const subject = encodeURIComponent("Campaign Inquiry from " + name);
-    const body = encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message);
-    
-    window.location.href = "mailto:info@alexschnellpa3.com?subject=" + subject + "&body=" + body;
+const form = document.getElementById('contactForm');
+const result = document.getElementById('result');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault(); 
+  
+  // We use FormData directly to support file uploads
+  const formData = new FormData(form);
+
+  // Visual feedback
+  submitBtn.disabled = true;
+  submitBtn.innerText = "Sending...";
+  result.style.display = "block";
+  result.style.backgroundColor = "#f1f5f9";
+  result.innerText = "Please wait...";
+
+  fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData // Send the formData directly, not JSON
+  })
+  .then(async (response) => {
+      let json = await response.json();
+      if (response.status == 200) {
+          result.style.backgroundColor = "#dcfce7"; 
+          result.style.color = "#166534";
+          result.innerText = "Message sent! We'll be in touch soon.";
+          form.reset(); 
+      } else {
+          result.style.backgroundColor = "#fee2e2"; 
+          result.style.color = "#991b1b";
+          result.innerText = json.message || "Something went wrong.";
+      }
+  })
+  .catch(error => {
+      result.innerText = "Something went wrong. Please try again later.";
+  })
+  .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Submit Message";
+      setTimeout(() => {
+          result.style.display = "none";
+      }, 5000);
   });
+});
 </script>
 
 </body>
