@@ -1,91 +1,175 @@
-/* --- Global Styles --- */
-body {
-  font-family: Georgia, "Times New Roman", serif;
-  margin: 0;
-  background-color: #f7f7f7;
-  color: #1e1e1e;
-  line-height: 1.7;
+/* ================================
+   GLOBAL STYLES — CONGRESSIONAL
+   ================================ */
+
+:root {
+  /* USWDS-aligned palette */
+  --primary-navy: #112e51;
+  --accent-red: #cd2026;
+  --bg-gray: #f0f0f0;
+  --text-main: #212121;
+  --white: #ffffff;
 }
 
+body {
+  font-family: 'Public Sans', 'Source Sans Pro', sans-serif;
+  margin: 0;
+  background-color: var(--bg-gray);
+  color: var(--text-main);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ================================
+   HEADER & NAVIGATION
+   ================================ */
+
 header {
-  background-color: #1f2a44; /* Navy Blue */
-  color: white;
-  padding: 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--primary-navy);
+  color: var(--white);
+  padding: 2rem 5%;
+  border-bottom: 4px solid var(--accent-red);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 header h1 {
   margin: 0;
-  font-size: 2.1rem;
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-size: 2.25rem;
 }
 
 nav {
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 nav a {
-  color: #dcdcdc;
-  margin-right: 1.2rem;
+  color: var(--white);
+  margin: 0 1rem;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid transparent;
 }
 
 nav a:hover {
-  color: #ffffff;
+  border-bottom: 2px solid var(--white);
 }
 
-/* --- Content Layout --- */
+/* Donate link emphasis (NOT a button) */
+nav a.donate-link {
+  border: 2px solid var(--accent-red);
+  padding: 0.45rem 0.9rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+nav a.donate-link:hover {
+  background-color: var(--accent-red);
+  color: var(--white);
+  border-bottom: 2px solid transparent;
+}
+
+/* ================================
+   MAIN CONTENT LAYOUT
+   ================================ */
+
 main {
-  max-width: 900px;
-  margin: auto;
-  padding: 2rem;
-  background: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05); /* Soft shadow for a clean look */
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 3rem;
+  background: var(--white);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border-radius: 8px;
 }
 
 section {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 h2 {
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 0.4rem;
+  font-family: 'Merriweather', serif;
+  color: var(--primary-navy);
+  border-bottom: 3px solid var(--bg-gray);
+  padding-bottom: 0.75rem;
+  margin-top: 0;
 }
 
-img {
-  max-width: 100%;
-  height: auto; /* Ensures photos don't stretch */
-  margin: 1.2rem 0;
-  border-radius: 4px;
-}
+/* ================================
+   COMPONENTS
+   ================================ */
 
 .callout {
-  background: #eef2f7;
-  padding: 1.2rem;
-  border-left: 6px solid #1f2a44;
+  background: #f1f4f9;
+  padding: 2rem;
+  border-left: 8px solid var(--primary-navy);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #333;
 }
+
+.button-primary {
+  background-color: var(--accent-red);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Standard content images — sitewide */
+
+.content-image {
+  display: block;
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  border-radius: 6px;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
 
 footer {
   text-align: center;
-  padding: 2rem;
-  font-size: 0.9rem;
-  background: #e6e6e6;
-  color: #444;
+  padding: 3rem 1rem;
+  font-size: 0.85rem;
+  background: var(--primary-navy);
+  color: #aeb0b5;
 }
 
-/* --- Mobile Responsiveness --- */
-/* This only triggers on screens smaller than 600px wide (Phones) */
-@media (max-width: 600px) {
+/* ================================
+   RESPONSIVE — MOBILE
+   ================================ */
+
+@media (max-width: 768px) {
   main {
-    padding: 1rem; /* More room for text on narrow screens */
+    margin: 1rem;
+    padding: 1.5rem;
   }
-  
+
   header h1 {
-    font-size: 1.6rem; /* Prevents title from wrapping weirdly */
+    font-size: 1.8rem;
+    text-align: center;
   }
 
   nav a {
-    display: block; /* Stacks links vertically for easier tapping */
-    margin-bottom: 0.8rem;
-    margin-right: 0;
+    display: inline-block;
+    margin: 0.5rem;
+  }
+  
+  .content-image {
+    max-width: 240px;
   }
 }
